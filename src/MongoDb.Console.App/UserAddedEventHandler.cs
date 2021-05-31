@@ -39,7 +39,8 @@ namespace MongoDb.Console.App
         {
             var registeredEvent = _deserialize.Deserialize<UserAddedEvent>(eventDetails);
             //use web3 or aelf client to get some information from chain
-            //_nodeManagerProvider
+            var nodeManager = _nodeManagerProvider.GetNodeManager(eventDetails.NodeName);
+            //deal with eventDetails
             return null;
         }
 
