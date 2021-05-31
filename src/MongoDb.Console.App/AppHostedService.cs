@@ -10,23 +10,19 @@ namespace MongoDb.Console.App
     {
         private readonly IAbpApplicationWithExternalServiceProvider _application;
         private readonly IServiceProvider _serviceProvider;
-        private readonly DataMapService _dataMapService;
 
         public AppHostedService(
             IAbpApplicationWithExternalServiceProvider application,
-            IServiceProvider serviceProvider,
-            DataMapService dataMapService)
+            IServiceProvider serviceProvider)
         {
             _application = application;
             _serviceProvider = serviceProvider;
-            _dataMapService = dataMapService;
         }
 
-        public async Task StartAsync(CancellationToken cancellationToken)
+        public Task StartAsync(CancellationToken cancellationToken)
         {
             _application.Initialize(_serviceProvider);
-
-            await _dataMapService.ResolveMessage();
+            return Task.CompletedTask;
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
