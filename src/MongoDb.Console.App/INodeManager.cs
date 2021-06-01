@@ -8,6 +8,9 @@ namespace MongoDb.Console.App
     {
         public string NodeName { get; set; }
         public Task<T> CallTransactionResult<T>(params object[] functionInput);
+        
+        //aelf
+        //public ByteString QueryView(string from, string to, string methodName, IMessage inputParameter)
     }
     
     // public class Web3NodeManager: INodeManager
