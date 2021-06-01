@@ -21,6 +21,8 @@ namespace MongoDb.Console.App.DTO
         public string NetworkName { get; set; }
 
         public BigInteger Timestamp { get; set; }
+        
+        public string[] Topics { get; set; }
 
         public string GetId()
         {

@@ -11,5 +11,9 @@ namespace MongoDb.Console.MongoDB.Entities
         public string Token { get; set; }
         
         public BigInteger LastLogBlock { get; set; }
+        
+        public string ContractAddress { get; set; }
+        
+        public string EventName { get; set; }
     }
 }

@@ -9,43 +9,39 @@ namespace MongoDb.Console.App
     public class UserAddedEventHandler : IEventHandler
     {
         public UserAddedEventHandler(string eventId, IContractDetailsDeserialize deserialize,
-            IRepository<UserEntity> registeredEventRepository, INodeManagerProvider nodeManagerProvider)
+            IRepository<UserEntity> userAddedEventRepository, INodeManagerProvider nodeManagerProvider)
         {
             EventId = eventId;
             _deserialize = deserialize;
-            _registeredEventRepository = registeredEventRepository;
+            _userAddedEventRepository = userAddedEventRepository;
             _nodeManagerProvider = nodeManagerProvider;
         }
 
         private string EventId { get; }
         private readonly IContractDetailsDeserialize _deserialize;
-        private readonly IRepository<UserEntity> _registeredEventRepository;
+        private readonly IRepository<UserEntity> _userAddedEventRepository;
         private INodeManagerProvider _nodeManagerProvider;
 
-        public bool IsRegisteredEvent(ContractEventDetails eventDetails)
+        public bool IsUserAddedEvent(ContractEventDetails eventDetails)
         {
             return eventDetails.GetId() == EventId;
         }
 
         public async Task HandleEventAsync(ContractEventDetails eventDetails)
         {
-            if (!IsRegisteredEvent(eventDetails))
+            if (!IsUserAddedEvent(eventDetails))
                 return;
             
-            await _registeredEventRepository.InsertAsync(TransferToEntity(eventDetails));
+            await _userAddedEventRepository.InsertAsync(TransferToEntity(eventDetails));
         }
 
         private UserEntity TransferToEntity(ContractEventDetails eventDetails)
         {
-            var registeredEvent = _deserialize.Deserialize<UserAddedEvent>(eventDetails);
+            var userAddedEvent = _deserialize.Deserialize<UserAddedEvent>(eventDetails);
             //use web3 or aelf client to get some information from chain
             var nodeManager = _nodeManagerProvider.GetNodeManager(eventDetails.NodeName);
             //deal with eventDetails
             return null;
-        }
-
-        private class UserAddedEvent
-        {
         }
     }
 }
