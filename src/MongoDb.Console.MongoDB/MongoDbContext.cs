@@ -9,7 +9,6 @@ namespace MongoDb.Console.MongoDB
     {
         public IMongoCollection<UserEntity> Users => Collection<UserEntity>();
         
-        //[ConnectionStringName("mongodb://127.0.0.1:27017")]
         [ConnectionStringName("Default")]
         protected override void CreateModel(IMongoModelBuilder modelBuilder)
         {
