@@ -4,11 +4,11 @@ using MongoDb.Console.App.Provider;
 using MongoDb.Console.MongoDB.Entities;
 using Volo.Abp.Domain.Repositories;
 
-namespace MongoDb.Console.App
+namespace MongoDb.Console.App.EventProcessors
 {
-    public class UserAddedEventHandler : IEventHandler
+    public class UserAddedEventProcessor : IEventProcessor
     {
-        public UserAddedEventHandler(string eventId, IContractDetailsDeserialize deserialize,
+        public UserAddedEventProcessor(string eventId, IContractDetailsDeserialize deserialize,
             IRepository<UserEntity> userAddedEventRepository, INodeManagerProvider nodeManagerProvider)
         {
             EventId = eventId;

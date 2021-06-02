@@ -3,7 +3,7 @@ using MongoDb.Console.App.DTO;
 
 namespace MongoDb.Console.App
 {
-    public interface IEventHandler
+    public interface IEventProcessor
     {
         Task HandleEventAsync(ContractEventDetails eventDetails);
     }
