@@ -8,23 +8,25 @@ namespace MongoDb.Console.App.EventProcessors
 {
     public class UserAddedEventProcessor : IEventProcessor
     {
-        public UserAddedEventProcessor(string eventId, IContractDetailsDeserialize deserialize,
+        public UserAddedEventProcessor(IContractDetailsDeserialize deserialize,
             IRepository<UserEntity> userAddedEventRepository, INodeManagerProvider nodeManagerProvider)
         {
-            EventId = eventId;
             _deserialize = deserialize;
             _userAddedEventRepository = userAddedEventRepository;
             _nodeManagerProvider = nodeManagerProvider;
         }
 
-        private string EventId { get; }
+        public string NodeName { get; } = "ethereum";
+        public string ContractAddress { get; } = "0xabcd";
+        public string EventName { get; } = "UserAdded";
         private readonly IContractDetailsDeserialize _deserialize;
         private readonly IRepository<UserEntity> _userAddedEventRepository;
-        private INodeManagerProvider _nodeManagerProvider;
+        private readonly INodeManagerProvider _nodeManagerProvider;
 
         public bool IsUserAddedEvent(ContractEventDetails eventDetails)
         {
-            return eventDetails.GetId() == EventId;
+            return EventName == eventDetails.Name && eventDetails.NodeName == NodeName &&
+                   eventDetails.Address == ContractAddress;
         }
 
         public async Task HandleEventAsync(ContractEventDetails eventDetails)
