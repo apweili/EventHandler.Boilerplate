@@ -23,6 +23,7 @@ namespace MongoDb.Console.App.DTO
         public BigInteger Timestamp { get; set; }
         
         public object[] Topics { get; set; }
+        public string Data { get; set; }
 
         public string GetId()
         {

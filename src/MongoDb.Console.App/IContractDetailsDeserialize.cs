@@ -14,7 +14,7 @@ namespace MongoDb.Console.App
     {
         public T Deserialize<T>(ContractEventDetails data) where T : IEventDTO, new()
         {
-            var newLog = new FilterLog {Topics = data.Topics};
+            var newLog = new FilterLog {Topics = data.Topics, Data = data.Data};
 
             return Event<T>.DecodeEvent(newLog).Event;
         }
