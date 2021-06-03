@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MongoDb.Console.App.DTO;
+using Volo.Abp.BackgroundJobs;
 using Volo.Abp.DependencyInjection;
-using Volo.Abp.EventBus.Distributed;
 
 namespace MongoDb.Console.App
 {
-    public class ContractEventDetailsHandler: IDistributedEventHandler<ContractEventDetails>,
-        ISingletonDependency
+    public class ContractEventDetailsHandler: AsyncBackgroundJob<ContractEventDetailsETO>,
+        ITransientDependency
     {
         private readonly IEnumerable<IEventProcessor> _eventProcessors;
 
@@ -15,8 +15,8 @@ namespace MongoDb.Console.App
         {
             _eventProcessors = eventProcessors;
         }
-
-        public async Task HandleEventAsync(ContractEventDetails eventData)
+        
+        public override async Task ExecuteAsync(ContractEventDetailsETO eventData)
         {
             foreach (var processor in _eventProcessors)
             {

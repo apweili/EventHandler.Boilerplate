@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace MongoDb.Console.App.DTO
 {
-    public class ContractEventDetails
+    public class ContractEventDetailsETO
     {
         public string Name { get; set; }
         public string FilterId { get; set; }

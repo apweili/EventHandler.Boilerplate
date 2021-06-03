@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using MongoDb.Console.MongoDB;
 using Volo.Abp.Autofac;
-using Volo.Abp.EventBus.RabbitMq;
+using Volo.Abp.BackgroundJobs.RabbitMQ;
 using Volo.Abp.Modularity;
 
 namespace MongoDb.Console.App
@@ -11,7 +11,7 @@ namespace MongoDb.Console.App
     [DependsOn(
         typeof(AbpAutofacModule),
         typeof(MongoDbModule),
-        typeof(AbpEventBusRabbitMqModule)
+        typeof(AbpBackgroundJobsRabbitMqModule)
     )]
     public class AppModule : AbpModule
     {

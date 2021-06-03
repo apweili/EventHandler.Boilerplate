@@ -16,32 +16,29 @@ namespace MongoDb.Console.App.EventProcessors
             _nodeManagerProvider = nodeManagerProvider;
         }
 
-        public string NodeName { get; } = "ethereum";
-        public string ContractAddress { get; } = "0xabcd";
-        public string EventName { get; } = "UserAdded";
+        // public string NodeName { get; } = "ethereum";
+        // public string ContractAddress { get; } = "0xabcd";
+        // public string EventName { get; } = "UserAdded";
         private readonly IContractDetailsDeserialize _deserialize;
         private readonly IRepository<UserEntity> _userAddedEventRepository;
         private readonly INodeManagerProvider _nodeManagerProvider;
 
-        public bool IsUserAddedEvent(ContractEventDetails eventDetails)
+        // public bool IsUserAddedEvent(ContractEventDetails eventDetails)
+        // {
+        //     return EventName == eventDetails.Name && eventDetails.NodeName == NodeName &&
+        //            eventDetails.Address == ContractAddress;
+        // }
+
+        public async Task HandleEventAsync(ContractEventDetailsETO eventDetailsEto)
         {
-            return EventName == eventDetails.Name && eventDetails.NodeName == NodeName &&
-                   eventDetails.Address == ContractAddress;
+            await _userAddedEventRepository.InsertAsync(TransferToEntity(eventDetailsEto));
         }
 
-        public async Task HandleEventAsync(ContractEventDetails eventDetails)
+        private UserEntity TransferToEntity(ContractEventDetailsETO eventDetailsEto)
         {
-            if (!IsUserAddedEvent(eventDetails))
-                return;
-            
-            await _userAddedEventRepository.InsertAsync(TransferToEntity(eventDetails));
-        }
-
-        private UserEntity TransferToEntity(ContractEventDetails eventDetails)
-        {
-            var userAddedEvent = _deserialize.Deserialize<UserAddedEvent>(eventDetails);
+            var userAddedEvent = _deserialize.Deserialize<UserAddedEvent>(eventDetailsEto);
             //use web3 or aelf client to get some information from chain
-            var nodeManager = _nodeManagerProvider.GetNodeManager(eventDetails.NodeName);
+            var nodeManager = _nodeManagerProvider.GetNodeManager(eventDetailsEto.NodeName);
             //deal with eventDetails
             return null;
         }

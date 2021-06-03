@@ -7,12 +7,12 @@ namespace MongoDb.Console.App
 {
     public interface IContractDetailsDeserialize
     {
-        T Deserialize<T>(ContractEventDetails data) where T : IEventDTO, new();
+        T Deserialize<T>(ContractEventDetailsETO data) where T : IEventDTO, new();
     }
 
     public class ContractDetailsDeserialize : IContractDetailsDeserialize
     {
-        public T Deserialize<T>(ContractEventDetails data) where T : IEventDTO, new()
+        public T Deserialize<T>(ContractEventDetailsETO data) where T : IEventDTO, new()
         {
             var newLog = new FilterLog {Topics = data.Topics, Data = data.Data};
 
