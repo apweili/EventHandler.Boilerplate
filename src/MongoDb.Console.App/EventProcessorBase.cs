@@ -1,6 +1,7 @@
-using System.Numerics;
 using System.Threading.Tasks;
 using MongoDb.Console.App.DTO;
+using MongoDb.Console.MongoDB.Entities;
+using Volo.Abp.Domain.Repositories;
 
 namespace MongoDb.Console.App
 {
@@ -8,10 +9,13 @@ namespace MongoDb.Console.App
     {
         private readonly string _eventId;
         private readonly IEventTaskScheduler _eventTaskScheduler;
+        private readonly IRepository<ContractEventLogInfo> _eventDealWithInfoRepository;
 
-        protected EventProcessorBase(IEventTaskScheduler eventTaskScheduler)
+        protected EventProcessorBase(IEventTaskScheduler eventTaskScheduler,
+            IRepository<ContractEventLogInfo> eventDealWithInfoRepository)
         {
             _eventTaskScheduler = eventTaskScheduler;
+            _eventDealWithInfoRepository = eventDealWithInfoRepository;
             _eventId = "define by user";
         }
 
@@ -56,15 +60,18 @@ namespace MongoDb.Console.App
         {
             return _eventId;
         }
-
-        public virtual BigInteger GetLatestEventTimestamp()
+        
+        private async Task<ContractEventLogInfo> GetLatestEventDealWithInfo(ContractEventDetailsETO eventDetailsEto)
         {
-            throw new System.NotImplementedException();
+            return await _eventDealWithInfoRepository.SingleOrDefaultAsync(x => x.Id == eventDetailsEto.GetId());
         }
-
-        public void SaveLatestEventTimestamp(ContractEventDetailsETO eventDetailsEto)
+        
+        private async Task SaveEventDealWithInfo(ContractEventLogInfo eventDetailsEto, bool isUpdate)
         {
-            throw new System.NotImplementedException();
+            if (isUpdate)
+                await _eventDealWithInfoRepository.UpdateAsync(eventDetailsEto);
+            else
+                await _eventDealWithInfoRepository.InsertAsync(eventDetailsEto);
         }
     }
 }

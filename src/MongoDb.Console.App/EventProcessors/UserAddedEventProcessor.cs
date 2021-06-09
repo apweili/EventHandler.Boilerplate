@@ -10,13 +10,14 @@ namespace MongoDb.Console.App.EventProcessors
     {
         public UserAddedEventProcessor(IContractDetailsDeserialize deserialize,
             IRepository<UserEntity> userAddedEventRepository, INodeManagerProvider nodeManagerProvider,
-            IEventTaskScheduler eventTaskScheduler) : base(eventTaskScheduler)
+            IEventTaskScheduler eventTaskScheduler, IRepository<ContractEventLogInfo> eventDealWithInfoRepository) :
+            base(eventTaskScheduler, eventDealWithInfoRepository)
         {
             _deserialize = deserialize;
             _userAddedEventRepository = userAddedEventRepository;
             _nodeManagerProvider = nodeManagerProvider;
         }
-        
+
         private readonly IContractDetailsDeserialize _deserialize;
         private readonly IRepository<UserEntity> _userAddedEventRepository;
         private readonly INodeManagerProvider _nodeManagerProvider;

@@ -1,6 +1,7 @@
 using System.Numerics;
 using System.Threading.Tasks;
 using MongoDb.Console.App.DTO;
+using MongoDb.Console.MongoDB.Entities;
 
 namespace MongoDb.Console.App
 {
@@ -8,8 +9,8 @@ namespace MongoDb.Console.App
     {
         string GetEventId();
         Task HandleEventAsync(ContractEventDetailsETO eventDetailsEto);
-        BigInteger GetLatestEventTimestamp();
-        void SaveLatestEventTimestamp(ContractEventDetailsETO eventDetailsEto);
+        // Task<ContractEventLogInfo> GetLatestEventTimestamp();
+        // Task SaveLatestEventTimestamp(ContractEventLogInfo eventDetailsEto);
         bool IsParallelExecute();
         string GetParallelKey(ContractEventDetailsETO eventDetailsEto);
     }
