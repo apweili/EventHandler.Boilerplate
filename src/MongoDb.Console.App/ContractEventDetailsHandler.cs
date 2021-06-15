@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MongoDb.Console.App.DTO;
-using Volo.Abp.BackgroundJobs;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.EventBus.Distributed;
 
 namespace MongoDb.Console.App
 {
-    public class ContractEventDetailsHandler : AsyncBackgroundJob<ContractEventDetailsETO>,
+    public class ContractEventDetailsHandler : IDistributedEventHandler<ContractEventDetailsETO>,
         ITransientDependency
     {
         private readonly Dictionary<string, IEventProcessor> _eventProcessors;
@@ -18,7 +18,7 @@ namespace MongoDb.Console.App
             _eventProcessors = eventProcessors.ToDictionary(x => x.GetEventId(), x => x);
         }
 
-        public override async Task ExecuteAsync(ContractEventDetailsETO eventData)
+        public async Task HandleEventAsync(ContractEventDetailsETO eventData)
         {
             if (!_eventProcessors.TryGetValue(eventData.GetId(), out var processor))
             {
