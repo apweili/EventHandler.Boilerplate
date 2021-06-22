@@ -52,7 +52,7 @@ namespace MongoDb.Console.App
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddApplication<AppModule>();
+                    services.AddApplication<EventHandlerModule>();
                 });
     }
 }
