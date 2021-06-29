@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDb.Console.App", "src\MongoDb.Console.App\MongoDb.Console.App.csproj", "{00A2F7A3-BEC3-48F4-A91C-5A336C32A5D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E8067AED-2B6E-4134-AAF8-9101457D709A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDb.Console.MongoDB", "src\MongoDb.Console.MongoDB\MongoDb.Console.MongoDB.csproj", "{CDB4584A-9FF0-40A5-81A0-37B332E4876A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AElf.RabbitMQ", "src\AElf.RabbitMQ\AElf.RabbitMQ.csproj", "{6DB764BF-AA04-4763-B815-59E9ED407C77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AElf.AElfNode.EventHandler", "src\AElf.AElfNode.EventHandler\AElf.AElfNode.EventHandler.csproj", "{37E2DF44-677C-4259-878D-B17225BEF61D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AElf.EthereumNode.EventHandler", "src\AElf.EthereumNode.EventHandler\AElf.EthereumNode.EventHandler.csproj", "{C125BA56-934D-4F4F-9117-93FE135E3842}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00A2F7A3-BEC3-48F4-A91C-5A336C32A5D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A2F7A3-BEC3-48F4-A91C-5A336C32A5D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A2F7A3-BEC3-48F4-A91C-5A336C32A5D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A2F7A3-BEC3-48F4-A91C-5A336C32A5D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDB4584A-9FF0-40A5-81A0-37B332E4876A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDB4584A-9FF0-40A5-81A0-37B332E4876A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDB4584A-9FF0-40A5-81A0-37B332E4876A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDB4584A-9FF0-40A5-81A0-37B332E4876A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DB764BF-AA04-4763-B815-59E9ED407C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DB764BF-AA04-4763-B815-59E9ED407C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DB764BF-AA04-4763-B815-59E9ED407C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DB764BF-AA04-4763-B815-59E9ED407C77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37E2DF44-677C-4259-878D-B17225BEF61D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37E2DF44-677C-4259-878D-B17225BEF61D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37E2DF44-677C-4259-878D-B17225BEF61D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37E2DF44-677C-4259-878D-B17225BEF61D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C125BA56-934D-4F4F-9117-93FE135E3842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C125BA56-934D-4F4F-9117-93FE135E3842}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C125BA56-934D-4F4F-9117-93FE135E3842}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C125BA56-934D-4F4F-9117-93FE135E3842}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{00A2F7A3-BEC3-48F4-A91C-5A336C32A5D2} = {E8067AED-2B6E-4134-AAF8-9101457D709A}
+		{CDB4584A-9FF0-40A5-81A0-37B332E4876A} = {E8067AED-2B6E-4134-AAF8-9101457D709A}
+		{6DB764BF-AA04-4763-B815-59E9ED407C77} = {E8067AED-2B6E-4134-AAF8-9101457D709A}
+		{37E2DF44-677C-4259-878D-B17225BEF61D} = {E8067AED-2B6E-4134-AAF8-9101457D709A}
+		{C125BA56-934D-4F4F-9117-93FE135E3842} = {E8067AED-2B6E-4134-AAF8-9101457D709A}
+	EndGlobalSection
+EndGlobal
